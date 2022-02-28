@@ -1,4 +1,4 @@
-name: Go
+name: Go build
 
 on:
   push:
@@ -8,15 +8,43 @@ on:
 
 jobs:
 
-  build:
+  build_mac:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-
-    - name: Set up Go
-      uses: actions/setup-go@v2
+    - uses: actions/setup-go@v2
       with:
         go-version: 1.17
+    - run: GOOS=darwin GOARCH=amd64 go build -v ./...
+    - run: chmod +x pinky
+    - uses: actions/upload-artifact@v2
+      with:
+        name: mac-distribution
+        path: pinky
 
-    - name: Build
-      run: go build -v ./...
+  build_linux:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+    - run: GOOS=linux GOARCH=amd64 go build -v ./...
+    - run: chmod +x pinky
+    - uses: actions/upload-artifact@v2
+      with:
+        name: linux-distribution
+        path: pinky
+
+  build_wingows:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - uses: actions/setup-go@v2
+      with:
+        go-version: 1.17
+    - run: GOOS=windows GOARCH=amd64 go build -v ./...
+    - uses: actions/upload-artifact@v2
+      with:
+        name: windows-distribution
+        path: pinky.exe
