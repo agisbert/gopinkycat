@@ -9,14 +9,14 @@ import (
 
 func rgb(i int) (int, int, int) {
 	// from https://www.schemecolor.com/light-pink-pastels-gradient.php
-	var lavender_blush = [3]int{252, 237, 240}
-	var piggy_pink = [3]int{253, 226, 231}
-	var pale_pink = [3]int{253, 215, 222}
-	var light_red = [3]int{254, 203, 212}
+	var lavenderBlush = [3]int{252, 237, 240}
+	var piggyPink = [3]int{253, 226, 231}
+	var palePink = [3]int{253, 215, 222}
+	var lightRed = [3]int{254, 203, 212}
 	var Pink = [3]int{254, 192, 203}
-	var light_pink = [3]int{255, 181, 194}
+	var lightPink = [3]int{255, 181, 194}
 
-	var colors = [...][3]int{lavender_blush, piggy_pink, pale_pink, light_red, Pink, light_pink, Pink, light_red, pale_pink, piggy_pink, lavender_blush}
+	var colors = [...][3]int{lavenderBlush, piggyPink, palePink, lightRed, Pink, lightPink, Pink, lightRed, palePink, piggyPink, lavenderBlush}
 
 	var factoredIndex = float64(i) * 0.01
 
